@@ -1,0 +1,49 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #f3f5f7;
+}
+
+#content {
+    height: 100%;
+}
+
+.sapMPage {
+    background: #f3f5f7;
+}
+
+.sapMPanel {
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.sapMInput, .sapMSlt, .sapMInputBaseInner {
+    border-radius: 8px;
+    min-height: 2.7rem;
+}
+
+.sapMBtn {
+    border-radius: 10px;
+    min-height: 2.8rem;
+}
+
+.sapMTitle {
+    font-weight: 700;
+}
+
+.sapMLabel {
+    color: #58656d;
+    font-size: 0.78rem;
+}
+
+.sapMTable {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sapMPanelBG,
+.sapMPanelContent {
+    background: #ffffff;
+}

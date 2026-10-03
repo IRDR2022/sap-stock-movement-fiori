@@ -1,0 +1,137 @@
+<mvc:View
+    controllerName="com.sap.stockmovement.controller.StockMovement"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    displayBlock="true">
+    <Page id="stockMovementPage" title="Stock Movement" class="sapUiResponsivePadding">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Toolbar design="Transparent" class="sapUiTinyMarginBottom">
+                    <Title text="Stock Movement" level="H1"/>
+                    <ToolbarSpacer/>
+                    <Button icon="sap-icon://nav-back" text="Back"/>
+                    <Button icon="sap-icon://home" text="Home"/>
+                </Toolbar>
+
+                <Panel headerText="Movement Details" class="sapUiSmallMarginBottom">
+                    <content>
+                        <HBox wrap="Wrap" justifyContent="SpaceBetween">
+                            <VBox width="48%">
+                                <Label text="Movement Type"/>
+                                <Input value="311" enabled="false"/>
+                            </VBox>
+                            <VBox width="48%">
+                                <Label text="Plant"/>
+                                <Input value="1000"/>
+                            </VBox>
+                            <VBox width="48%">
+                                <Label text="From SLoc"/>
+                                <Input value="0001"/>
+                            </VBox>
+                            <VBox width="48%">
+                                <Label text="To SLoc"/>
+                                <Input value="0002"/>
+                            </VBox>
+                            <VBox width="48%">
+                                <Label text="Movement Date"/>
+                                <DatePicker value="2026-10-03"/>
+                            </VBox>
+                            <VBox width="48%">
+                                <Label text="Reason Code"/>
+                                <Input value="01"/>
+                            </VBox>
+                        </HBox>
+                    </content>
+                </Panel>
+
+                <Panel headerText="Scan Material" class="sapUiSmallMarginBottom">
+                    <content>
+                        <VBox>
+                            <HBox alignItems="Center">
+                                <SearchField id="materialInput" width="60%" placeholder="Scan or enter material"/>
+                                <Button text="Scan" type="Emphasized" press="onScanMaterial" class="sapUiTinyMarginBegin"/>
+                            </HBox>
+
+                            <HBox class="sapUiTinyMarginTop" alignItems="Center">
+                                <Input id="qtyInput" value="10" width="20%" placeholder="Qty" class="sapUiTinyMarginEnd"/>
+                                <Input value="EA" width="20%" enabled="false" class="sapUiTinyMarginEnd"/>
+                                <Input id="batchInput" value="BATCH-001" width="25%" class="sapUiTinyMarginEnd"/>
+                                <Input id="huInput" value="HU-8890001" width="25%"/>
+                            </HBox>
+
+                            <HBox class="sapUiTinyMarginTop">
+                                <Button text="Add to Movement" type="Accept" press="onAddItem"/>
+                                <Button text="Manual Entry" class="sapUiTinyMarginBegin"/>
+                                <Button text="Cancel" class="sapUiTinyMarginBegin"/>
+                            </HBox>
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <Panel headerText="Material Details" class="sapUiSmallMarginBottom">
+                    <content>
+                        <VBox>
+                            <HBox justifyContent="SpaceBetween">
+                                <Text text="Material: MAT-1001"/>
+                                <ObjectStatus text="Available" state="Success"/>
+                            </HBox>
+                            <Text text="Description: Screw M8 x 30"/>
+                            <Text text="Plant: 1000   |   Storage Loc: 0001"/>
+                            <Text text="Available Qty: 250 EA   |   Batch: BATCH-001"/>
+                            <Text text="Serial: S/N 11234   |   HU: HU-8890001"/>
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <Panel headerText="Movement List" class="sapUiSmallMarginBottom">
+                    <content>
+                        <Table id="itemsTable" items="{/items}">
+                            <columns>
+                                <Column><Text text="Material"/></Column>
+                                <Column><Text text="Qty"/></Column>
+                                <Column><Text text="Batch"/></Column>
+                                <Column><Text text="HU"/></Column>
+                                <Column><Text text="Status"/></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <Text text="{material}"/>
+                                    <Text text="{qty}"/>
+                                    <Text text="{batch}"/>
+                                    <Text text="{hu}"/>
+                                    <ObjectStatus text="{status}" state="Information"/>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </Panel>
+
+                <Panel headerText="Summary">
+                    <content>
+                        <VBox>
+                            <HBox justifyContent="SpaceBetween">
+                                <Text text="Total Items"/>
+                                <Text text="0"/>
+                            </HBox>
+                            <HBox justifyContent="SpaceBetween">
+                                <Text text="Total Quantity"/>
+                                <Text text="0 EA"/>
+                            </HBox>
+                            <HBox justifyContent="SpaceBetween">
+                                <Text text="Status"/>
+                                <ObjectStatus text="Ready for scanning" state="Information"/>
+                            </HBox>
+                        </VBox>
+                    </content>
+                </Panel>
+
+                <HBox class="sapUiMediumMarginTop" justifyContent="SpaceBetween">
+                    <Button text="Preview" type="Default" press="onPreview"/>
+                    <Button text="Confirm Posting" type="Emphasized" press="onConfirm"/>
+                </HBox>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
